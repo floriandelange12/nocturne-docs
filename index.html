@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en" data-theme-preference>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nocturne — theme documentation</title>
+<meta name="description" content="Set up the Nocturne Shopify theme: brand, booking, disciplines, storefront mode, navigation, colour schemes, products and languages.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Work+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/docs.css">
+<script>
+  // Applied before paint so a chosen theme never flashes the other one.
+  try {
+    var saved = localStorage.getItem('nocturne-docs-theme');
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+  } catch (e) {}
+</script>
+</head>
+<body>
+
+<header class="masthead">
+  <a class="masthead__mark" href="./">
+    <span class="masthead__name">Nocturne</span>
+    <span class="masthead__kind">Documentation</span>
+  </a>
+  <a class="masthead__link" href="support.html">Support</a>
+  <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch between light and dark">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+      <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/>
+    </svg>
+  </button>
+</header>
+
+<div class="layout">
+
+  <details class="toc" data-toc open>
+    <summary>On this page</summary>
+    <ol>
+      <li><a href="#start">Before you start</a></li>
+      <li><a href="#brand">Brand identity</a></li>
+      <li><a href="#contact">Contact &amp; opening hours</a></li>
+      <li><a href="#booking">Booking</a></li>
+      <li><a href="#disciplines">Disciplines</a></li>
+      <li><a href="#storefront">What your site shows</a></li>
+      <li><a href="#navigation">Navigation</a></li>
+      <li><a href="#look">Colours, type &amp; presets</a></li>
+      <li><a href="#sections">Sections &amp; pages</a></li>
+      <li><a href="#products">Products, cart &amp; filters</a></li>
+      <li><a href="#languages">Languages</a></li>
+      <li><a href="#demo">Demo content</a></li>
+      <li><a href="#updates">Updating the theme</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#support">Support</a></li>
+    </ol>
+  </details>
+
+  <main class="content">
+
+    <p class="eyebrow">Version 1.0</p>
+    <h1>Setting up Nocturne</h1>
+    <p class="lede">
+      Nocturne is built for studios that sell time before they sell things — barbers, tattoo
+      artists, salons, spas and clinics — and that also want a proper shop when they need one.
+      This guide takes a fresh install to a finished storefront in about half an hour. Everything
+      here is done in the theme editor and in your Shopify admin. You never need to touch code.
+    </p>
+
+    <section id="start">
+      <h2>Before you start</h2>
+      <div class="note note--caution">
+        <p>
+          <strong>Duplicate your theme before editing any code.</strong> Go to
+          <span class="path">Online Store → Themes</span>, open the <em>…</em> menu on Nocturne and
+          choose <em>Duplicate</em>. Edit the copy. Code changes are not covered by theme support,
+          and they are lost when you install a theme update. If you want changes that the settings
+          cannot make, hire a Shopify Partner.
+        </p>
+      </div>
+      <p>
+        Open <span class="path">Online Store → Themes → Customize</span>. Almost every setting in
+        this guide lives under <strong>Theme settings</strong>, the gear icon at the bottom of the
+        left sidebar. Section-specific settings live on the sections themselves.
+      </p>
+      <ol class="steps">
+        <li>Set your name, tagline and logo under <strong>Brand identity</strong>.</li>
+        <li>Fill in <strong>Contact</strong> — it feeds the footer, the map block, click-to-call and your search listing.</li>
+        <li>Choose how people book under <strong>Booking</strong>. Set a phone number as the safety net.</li>
+        <li>Decide under <strong>Store setup</strong> whether your site shows services only, or services and products.</li>
+        <li>Replace the placeholder photography with your own.</li>
+      </ol>
+    </section>
+
+    <section id="brand">
+      <h2>Brand identity</h2>
+      <p>
+        <span class="path">Theme settings → Brand identity</span>. Your studio name and tagline
+        appear in the header, in the mobile menu, in the footer and in link previews when someone
+        shares your site. Keep the tagline to two to five words — on a phone it sits under the
+        name on a single line, and a long one is shortened.
+      </p>
+      <p>
+        Add your logo here too. A wide logo reads better than a tall one; if you have no logo,
+        leave it empty and the theme sets your name in its display serif, which is how the demo
+        looks. The favicon is set in the same place.
+      </p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact &amp; opening hours</h2>
+      <p>
+        <span class="path">Theme settings → Contact</span>. These fields do more than fill the
+        footer. Your address feeds the visit section and the structured data that puts your studio
+        on the map in search results. Your phone number becomes a click-to-call link on mobile and
+        is the last fallback for the booking buttons. Your email is required for link previews.
+      </p>
+      <p>
+        Opening hours are set per day in the same group and appear in the footer, the visit
+        section and your search listing. Leave a day blank to show it as closed.
+      </p>
+    </section>
+
+    <section id="booking">
+      <h2>Booking</h2>
+      <p>
+        <span class="path">Theme settings → Booking</span>. This is the heart of the theme. Every
+        "Book" button on the site — header, hero, service cards, the floating button on mobile —
+        routes through one setting, so you change it once.
+      </p>
+
+      <h3>With a booking app</h3>
+      <p>
+        Install your booking app and enable its app embed under
+        <span class="path">Theme settings → App embeds</span>. Then set <em>Booking provider</em> to
+        that app and, if the app supports it, turn on the in-page widget so the booking flow opens
+        over your site instead of sending the customer away. Per discipline you can pass a branch
+        or staff group so each world opens on its own calendar.
+      </p>
+
+      <h3>With a booking link</h3>
+      <p>
+        No app? Paste your provider's booking page as a full <code>https://</code> address. Buttons
+        open it in a panel over your site, or in a new tab.
+      </p>
+
+      <h3>With a phone number</h3>
+      <p>
+        Leave both empty and set a phone number: the buttons become click-to-call. Plenty of
+        studios run this way and it works perfectly.
+      </p>
+
+      <div class="note">
+        <p>
+          <strong>Always set a phone number, whatever else you use.</strong> The buttons fall back
+          in order — widget, link, booking page, phone, email, contact page — so a customer is
+          never left with a button that does nothing, even if your booking app is down.
+        </p>
+      </div>
+    </section>
+
+    <section id="disciplines">
+      <h2>Disciplines</h2>
+      <p>
+        <span class="path">Theme settings → Disciplines &amp; booking context</span>. A discipline
+        is a world within your studio: barbering and tattooing under one roof, or hair and beauty,
+        or a clinic with two practices. Nocturne runs one to five of them from a single store, with
+        one cart and one checkout.
+      </p>
+      <p>Set the number of disciplines first — choose one and the switcher disappears entirely. For each one:</p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Setting</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td>Label</td><td>The name on the switcher above the header.</td></tr>
+            <tr><td>Page</td><td>Where the switcher sends people.</td></tr>
+            <tr><td>URL keyword</td><td>How the theme knows which world a visitor is in. Use a word that appears in that world's address and nowhere else — <code>tattoo</code> for <code>/pages/tattoo</code>.</td></tr>
+            <tr><td>Accent colour</td><td>Re-tints that world. Text on the accent is adjusted automatically so it stays readable.</td></tr>
+            <tr><td>Booking context</td><td>Passed to your booking app so the right calendar opens.</td></tr>
+            <tr><td>Menu</td><td>Optional. A separate navigation menu for that world.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note">
+        <p><strong>Keep the keywords apart.</strong> If two disciplines both match the same address, the theme cannot tell which world a visitor is in.</p>
+      </div>
+    </section>
+
+    <section id="storefront">
+      <h2>What your site shows</h2>
+      <p>
+        <span class="path">Theme settings → Store setup</span>, the setting called
+        <em>What this site shows</em>. It has two positions, and it changes what your header and
+        footer carry — never what your site can do.
+      </p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th></th><th>Services only</th><th>Services and products</th></tr></thead>
+          <tbody>
+            <tr><td>Search icon</td><td>hidden</td><td>shown</td></tr>
+            <tr><td>Cart icon</td><td>hidden until something is in the cart</td><td>shown</td></tr>
+            <tr><td>Account icon</td><td>shown</td><td>shown</td></tr>
+            <tr><td>Payment icons in the footer</td><td>hidden</td><td>shown</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        On <em>Services only</em> your product pages, collections, search and checkout all keep
+        working exactly as before — they are simply not advertised in the chrome. The cart icon
+        reappears the moment a customer puts something in the cart, so nobody is ever stranded
+        with a basket they cannot reach.
+      </p>
+      <p>
+        The account icon stays in both positions. Shopify requires it, and in a studio it is also
+        the door to a customer's appointments.
+      </p>
+    </section>
+
+    <section id="navigation">
+      <h2>Navigation</h2>
+      <p>
+        Menus are Shopify's, not the theme's: <span class="path">Online Store → Navigation</span>.
+        Build your main menu there and it appears in the header and in the mobile menu.
+      </p>
+      <p>
+        Until you build one, the header shows a small starter menu so a fresh install is never
+        empty. The moment your menu has a single link, yours takes over. If you run more than one
+        discipline you can give each its own menu under
+        <span class="path">Theme settings → Disciplines &amp; booking context</span>.
+      </p>
+      <p>
+        The account panel has its own menu. Create one named
+        <code>customer-account-main-menu</code> under
+        <span class="path">Online Store → Navigation</span> and its links appear when a customer
+        opens the account icon. Skip it and Shopify shows Orders and Profile, which is enough for
+        most studios.
+      </p>
+    </section>
+
+    <section id="look">
+      <h2>Colours, type &amp; presets</h2>
+      <p>
+        Nocturne ships three presets — complete looks you can apply in one click when you install
+        the theme, or rebuild yourself at any time from the settings.
+      </p>
+      <div class="table-scroll">
+        <table>
+          <thead><tr><th>Preset</th><th>Feels like</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Nocturne</strong></td><td>Warm near-black with gold. The signature look: cinematic, evening, appointment-led.</td></tr>
+            <tr><td><strong>Ivory</strong></td><td>The same structure in daylight — paper, ink and a deeper gold. Calm and clinical without being cold.</td></tr>
+            <tr><td><strong>Ember</strong></td><td>Warm and retail-forward, with the shop chrome on and a product shelf on the home page.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Colours live under <span class="path">Theme settings → Colors</span> as six schemes. Every
+        section picks a scheme, so you can alternate light and dark down a page without editing
+        colours twice. Contrast is checked as part of the theme's build; if you change a scheme,
+        keep text and background far enough apart to stay readable.
+      </p>
+      <p>
+        Type is under <span class="path">Theme settings → Typography</span>: a display face for
+        headings and a text face for everything else. Nocturne ships Playfair Display and Work
+        Sans. Both can be swapped for any font Shopify offers.
+      </p>
+    </section>
+
+    <section id="sections">
+      <h2>Sections &amp; pages</h2>
+      <p>
+        Every page is built from sections you can add, reorder and remove. Nocturne carries a full
+        set for a studio: cinematic hero, discipline split, service and price menus, appointment
+        steps, team profiles, before-and-after portfolio, atmosphere strips, testimonials, FAQ,
+        opening hours, booking calls-to-action, an Instagram wall and retail sections.
+      </p>
+      <p>
+        Several page templates come ready to use — services, a second discipline, team, gallery,
+        booking, about, contact, careers, memberships, gift cards and support. To use one, create
+        the page under <span class="path">Online Store → Pages</span> and pick the matching
+        template in the <em>Theme template</em> box on the right.
+      </p>
+      <div class="note">
+        <p>
+          <strong>The template list only shows templates from your published theme.</strong> If you
+          are still previewing Nocturne, publish it first, then assign templates to your pages.
+        </p>
+      </div>
+    </section>
+
+    <section id="products">
+      <h2>Products, cart &amp; filters</h2>
+      <p>
+        Nocturne is a full Shopify storefront: product pages with variants, video and 3D, a cart
+        as a drawer or a page, gift cards, subscriptions and every accelerated checkout button.
+        Add products under <span class="path">Products</span>, then turn on the retail sections you
+        want and set <em>What this site shows</em> to <em>Services and products</em>.
+      </p>
+      <p>
+        Filtering and sorting on collection and search pages is built in. The filters themselves
+        come from Shopify, not from the theme: install Shopify's own free
+        <strong>Search &amp; Discovery</strong> app and configure them there. Without it you get
+        availability and price only.
+      </p>
+      <p>
+        The cart behaves as a drawer by default. Switch it to a full page under
+        <span class="path">Theme settings → Cart</span> if you prefer.
+      </p>
+    </section>
+
+    <section id="languages">
+      <h2>Languages</h2>
+      <p>
+        The theme ships fully translated in English and Dutch — storefront text and every setting
+        label. Add languages under <span class="path">Online Store → Languages</span> and translate
+        your own content with Shopify's free <strong>Translate &amp; Adapt</strong> app. A language
+        and country selector appears in the footer automatically as soon as your store publishes
+        more than one.
+      </p>
+    </section>
+
+    <section id="demo">
+      <h2>Demo content</h2>
+      <p>
+        Nocturne looks finished on an empty store: every section carries placeholder photography
+        and demo cards, so you can judge the layout before you have content. Replace the
+        placeholders through each section's image picker.
+      </p>
+      <p>
+        If you would rather start from the demo store's products, collections, pages and menus,
+        your download includes a <code>demo-content</code> folder with a free import pack and
+        step-by-step instructions. It uses Shopify's own importer — no paid app.
+      </p>
+    </section>
+
+    <section id="updates">
+      <h2>Updating the theme</h2>
+      <p>
+        When a new version is released, Shopify offers it under
+        <span class="path">Online Store → Themes</span>. Updates keep your settings and content.
+        They cannot keep changes made to the theme's code — one more reason to make those in a
+        duplicate.
+      </p>
+      <p>
+        Before you publish an update, preview it and check the pages you have customised most.
+        Keep the previous version unpublished for a week rather than deleting it, so you can put
+        it back in one click.
+      </p>
+    </section>
+
+    <section id="faq" class="faq">
+      <h2>FAQ</h2>
+
+      <details>
+        <summary>Do I need a booking app to use this theme?</summary>
+        <p>
+          No. The theme works with a booking app, with a link to any booking provider, or with
+          nothing but a phone number. It never depends on one particular app.
+        </p>
+      </details>
+
+      <details>
+        <summary>Why do I only see two filters on my collection page?</summary>
+        <p>
+          Filters come from Shopify, not from the theme. Install Shopify's free
+          <strong>Search &amp; Discovery</strong> app and add the filters you want there; they
+          appear on your storefront immediately.
+        </p>
+      </details>
+
+      <details>
+        <summary>Can I sell products and still look like a studio?</summary>
+        <p>
+          That is what <em>What this site shows</em> is for. On <em>Services only</em> the header
+          drops its shop icons while your products, collections and checkout keep working. Switch
+          to <em>Services and products</em> when you want the shop out front.
+        </p>
+      </details>
+
+      <details>
+        <summary>My page template isn't in the dropdown.</summary>
+        <p>
+          Shopify only lists templates from the theme that is currently published. Publish Nocturne
+          first, then assign the template to your page.
+        </p>
+      </details>
+
+      <details>
+        <summary>Will an update overwrite my work?</summary>
+        <p>
+          Your settings, content and images are kept. Changes made directly to the theme's code are
+          not — make those in a duplicate of the theme.
+        </p>
+      </details>
+
+      <details>
+        <summary>What does support cover?</summary>
+        <p>
+          Bugs in the theme, and questions about how to use it. It does not cover custom code,
+          third-party apps, or design work on your store — for those, a Shopify Partner is the
+          right help. See the <a href="support.html">support page</a>.
+        </p>
+      </details>
+    </section>
+
+    <section id="support">
+      <h2>Support</h2>
+      <p>
+        Found a bug, or stuck on a setting? Use the
+        <a href="support.html">support form</a>. You will get an automatic confirmation
+        immediately and a real answer within two working days.
+      </p>
+    </section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <p>Nocturne 1.0 — a Shopify theme by Atelier Studio. <a href="support.html">Support</a></p>
+</footer>
+
+<script>
+  // Theme toggle. The button flips the stamp the stylesheet keys off; without a
+  // stamp the page follows the reader's system setting, which is the default.
+  (function () {
+    // Ships open so a no-JS desktop keeps its contents list; folded away here
+    // only where it would otherwise push the article off the screen.
+    var toc = document.querySelector('[data-toc]');
+    if (toc && window.matchMedia('(max-width: 899px)').matches) toc.open = false;
+
+    var root = document.documentElement;
+    var button = document.querySelector('[data-theme-toggle]');
+    button.addEventListener('click', function () {
+      var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var current = root.getAttribute('data-theme') || (dark ? 'dark' : 'light');
+      var next = current === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('nocturne-docs-theme', next); } catch (e) {}
+    });
+
+    // Mark the section being read in the table of contents.
+    var links = [].slice.call(document.querySelectorAll('.toc a'));
+    var sections = links
+      .map(function (a) { return document.querySelector(a.getAttribute('href')); })
+      .filter(Boolean);
+    if (!('IntersectionObserver' in window) || !sections.length) return;
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        links.forEach(function (a) {
+          a.setAttribute('aria-current', a.getAttribute('href') === '#' + entry.target.id ? 'true' : 'false');
+        });
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
+    sections.forEach(function (section) { observer.observe(section); });
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,450 @@
+/*
+ * Nocturne documentation — house style.
+ *
+ * The theme ships Playfair Display + Work Sans and a warm near-black ground with
+ * a gold brand. The documentation uses the same two faces and the same palette
+ * on purpose: a merchant who has just bought the theme should recognise where
+ * they are, and Shopify's own requirement is that the documentation reads
+ * consistently with the theme settings.
+ *
+ * Light values live on bare :root so the un-stamped "system" state resolves;
+ * dark is redefined once for prefers-color-scheme and once for the explicit
+ * toggle, so neither can strand the other's text on the wrong ground.
+ */
+
+:root {
+  --ground: #f7f4ee;
+  --surface: #ffffff;
+  --surface-sunken: #efe9df;
+  --ink: #191512;
+  --ink-muted: #6b6157;
+  /* The theme's own AA-safe gold for text on a light surface. */
+  --gold: #80551a;
+  --gold-strong: #6a4515;
+  --gold-wash: rgba(184, 134, 45, 0.12);
+  --line: rgba(25, 21, 18, 0.14);
+  --note: #6e2b33;
+  --note-wash: rgba(110, 43, 51, 0.08);
+  --shadow: 0 1px 2px rgba(25, 21, 18, 0.05), 0 8px 24px rgba(25, 21, 18, 0.06);
+
+  --measure: 68ch;
+  --sidebar: 17rem;
+  --radius: 4px;
+  --step: clamp(1rem, 0.6rem + 1.4vw, 1.5rem);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --ground: #0e0e10;
+    --surface: #17130f;
+    --surface-sunken: #121010;
+    --ink: #f4efe6;
+    --ink-muted: #b7aa94;
+    --gold: #c78a2f;
+    --gold-strong: #d9a04b;
+    --gold-wash: rgba(199, 138, 47, 0.13);
+    --line: rgba(244, 239, 230, 0.13);
+    --note: #d99aa2;
+    --note-wash: rgba(110, 43, 51, 0.22);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.35);
+  }
+}
+
+:root[data-theme='dark'] {
+  --ground: #0e0e10;
+  --surface: #17130f;
+  --surface-sunken: #121010;
+  --ink: #f4efe6;
+  --ink-muted: #b7aa94;
+  --gold: #c78a2f;
+  --gold-strong: #d9a04b;
+  --gold-wash: rgba(199, 138, 47, 0.13);
+  --line: rgba(244, 239, 230, 0.13);
+  --note: #d99aa2;
+  --note-wash: rgba(110, 43, 51, 0.22);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-weight: 500;
+  line-height: 1.15;
+  text-wrap: balance;
+  margin: 0;
+}
+
+h1 { font-size: clamp(2.1rem, 1.4rem + 2.6vw, 3.1rem); letter-spacing: -0.01em; }
+h2 { font-size: clamp(1.5rem, 1.15rem + 1.3vw, 2rem); margin-block: 3.5rem 1rem; }
+h3 { font-size: 1.18rem; font-weight: 600; margin-block: 2rem 0.5rem; }
+
+p, ul, ol, dl { margin-block: 0 1rem; }
+ul, ol { padding-inline-start: 1.35rem; }
+li { margin-block-end: 0.4rem; }
+li::marker { color: var(--gold); }
+
+a { color: var(--gold); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+a:hover { color: var(--gold-strong); }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 2px; }
+
+strong { font-weight: 600; }
+
+code {
+  font-family: ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, monospace;
+  font-size: 0.875em;
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+  background: var(--gold-wash);
+  color: inherit;
+}
+
+pre {
+  margin-block: 0 1.25rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-sunken);
+  overflow-x: auto;
+}
+pre code { background: none; padding: 0; font-size: 0.85rem; line-height: 1.6; }
+
+/* ── Shell ─────────────────────────────────────────────────────────────── */
+
+.masthead {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem var(--step);
+  border-block-end: 1px solid var(--line);
+  background: color-mix(in srgb, var(--ground) 92%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+.masthead__mark {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  margin-inline-end: auto;
+  color: inherit;
+  text-decoration: none;
+}
+.masthead__name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.35rem;
+  line-height: 1;
+}
+.masthead__kind {
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.masthead__link {
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.theme-toggle:hover { border-color: var(--gold); color: var(--gold); }
+.theme-toggle svg { width: 17px; height: 17px; }
+
+.layout {
+  display: grid;
+  grid-template-columns: var(--sidebar) minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: start;
+  max-width: 78rem;
+  margin-inline: auto;
+  padding: 0 var(--step) 6rem;
+}
+
+.toc {
+  position: sticky;
+  inset-block-start: 4.5rem;
+  max-height: calc(100dvh - 6rem);
+  padding-block: 2.5rem;
+  overflow-y: auto;
+  font-size: 0.875rem;
+}
+/* A <details> so the phone can fold fifteen entries away instead of pushing the
+   article a screen and a half down. It ships `open`, and the script closes it
+   only on small screens — so with no JavaScript the desktop keeps its list and
+   the phone keeps a long but working one. */
+.toc summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 0.75rem;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  cursor: default;
+  list-style: none;
+}
+.toc summary::-webkit-details-marker { display: none; }
+.toc summary::after { content: ''; }
+.toc ol { list-style: none; margin: 0; padding: 0; counter-reset: toc; }
+.toc li { margin: 0; }
+.toc a {
+  display: block;
+  padding: 0.32rem 0 0.32rem 0.85rem;
+  border-inline-start: 2px solid var(--line);
+  color: var(--ink-muted);
+  text-decoration: none;
+  line-height: 1.35;
+}
+.toc a:hover { color: var(--ink); border-inline-start-color: var(--gold); }
+.toc a[aria-current='true'] { color: var(--gold); border-inline-start-color: var(--gold); font-weight: 500; }
+
+.content { padding-block: 2.5rem; max-width: var(--measure); }
+.content > * { max-width: var(--measure); }
+
+.lede {
+  font-size: 1.12rem;
+  line-height: 1.6;
+  color: var(--ink-muted);
+  margin-block: 1rem 2rem;
+}
+
+section[id] { scroll-margin-block-start: 5rem; }
+
+/* ── Components ────────────────────────────────────────────────────────── */
+
+.eyebrow {
+  margin: 0 0 0.6rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* Where to click, repeated often enough to earn its own mark. */
+.path {
+  display: inline-block;
+  padding: 0.1em 0.45em;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-size: 0.85em;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.note {
+  margin-block: 1.25rem;
+  padding: 0.9rem 1.1rem;
+  border-inline-start: 2px solid var(--gold);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: var(--gold-wash);
+  font-size: 0.94rem;
+}
+.note--caution { border-inline-start-color: var(--note); background: var(--note-wash); }
+.note p:last-child { margin-block-end: 0; }
+.note strong { color: var(--gold); }
+.note--caution strong { color: var(--note); }
+
+table {
+  width: 100%;
+  margin-block: 0 1.5rem;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+.table-scroll { overflow-x: auto; max-width: var(--measure); }
+th, td {
+  padding: 0.6rem 0.8rem 0.6rem 0;
+  border-block-end: 1px solid var(--line);
+  text-align: start;
+  vertical-align: top;
+}
+th {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+/* The setup really is a sequence, so it is numbered. Nothing else is. */
+.steps { counter-reset: step; list-style: none; padding: 0; }
+.steps > li {
+  position: relative;
+  counter-increment: step;
+  padding-inline-start: 2.6rem;
+  margin-block-end: 1.15rem;
+}
+.steps > li::before {
+  content: counter(step);
+  position: absolute;
+  inset-inline-start: 0;
+  inset-block-start: 0.05rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  display: grid;
+  place-content: center;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  color: var(--gold);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.faq { border-block-start: 1px solid var(--line); }
+.faq details { border-block-end: 1px solid var(--line); }
+.faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: '+';
+  color: var(--gold);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+.faq details[open] summary::after { content: '\2212'; }
+.faq details > *:not(summary) { margin-block-end: 1rem; }
+
+.footer {
+  border-block-start: 1px solid var(--line);
+  padding: 2.5rem var(--step);
+  color: var(--ink-muted);
+  font-size: 0.86rem;
+  text-align: center;
+}
+
+/* ── Support form ──────────────────────────────────────────────────────── */
+
+.field { display: grid; gap: 0.4rem; margin-block-end: 1.15rem; }
+.field label { font-size: 0.86rem; font-weight: 500; }
+.field .hint { font-size: 0.8rem; color: var(--ink-muted); }
+
+input[type='text'],
+input[type='email'],
+input[type='url'],
+input[type='file'],
+select,
+textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: inherit;
+  font: inherit;
+  /* 16px keeps iOS from zooming the page when a field takes focus. */
+  font-size: max(1rem, 16px);
+}
+textarea { min-height: 9rem; resize: vertical; line-height: 1.55; }
+input:focus-visible, select:focus-visible, textarea:focus-visible { border-color: var(--gold); }
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0.7rem 1.6rem;
+  border: 1px solid var(--gold);
+  border-radius: var(--radius);
+  background: var(--gold);
+  color: var(--ground);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+.button:hover { background: var(--gold-strong); border-color: var(--gold-strong); color: var(--ground); }
+.button[disabled] { opacity: 0.55; cursor: progress; }
+
+.honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.form-status { margin-block-start: 1rem; font-size: 0.92rem; }
+.form-status[data-state='error'] { color: var(--note); }
+.form-status[data-state='ok'] { color: var(--gold); }
+
+/* ── Small screens ─────────────────────────────────────────────────────── */
+
+@media (max-width: 899px) {
+  .layout { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .toc {
+    position: static;
+    max-height: none;
+    padding-block: 1.5rem 0;
+    overflow: visible;
+  }
+  .toc { border-block-end: 1px solid var(--line); padding-block-end: 0.75rem; }
+  .toc summary {
+    min-height: 44px;
+    margin: 0;
+    cursor: pointer;
+  }
+  /* The only chevron on the page, so it is drawn rather than imported. */
+  .toc summary::after {
+    content: '';
+    width: 0.42rem;
+    height: 0.42rem;
+    border-inline-end: 1.5px solid var(--gold);
+    border-block-end: 1.5px solid var(--gold);
+    transform: rotate(45deg) translate(-2px, -2px);
+    transition: transform 0.18s ease;
+  }
+  .toc[open] summary::after { transform: rotate(225deg) translate(-2px, -2px); }
+  .toc ol { display: grid; gap: 0.15rem; padding-block: 0.35rem 0.5rem; }
+  .content { padding-block-start: 1.5rem; }
+}
+
+@media (max-width: 560px) {
+  .masthead__kind { display: none; }
+}

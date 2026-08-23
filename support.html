@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nocturne — support</title>
+<meta name="description" content="Report a bug or ask a question about the Nocturne Shopify theme. Answered within two working days.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Work+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/docs.css">
+<script>
+  try {
+    var saved = localStorage.getItem('nocturne-docs-theme');
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+  } catch (e) {}
+</script>
+</head>
+<body>
+
+<header class="masthead">
+  <a class="masthead__mark" href="./">
+    <span class="masthead__name">Nocturne</span>
+    <span class="masthead__kind">Documentation</span>
+  </a>
+  <a class="masthead__link" href="./">Guide</a>
+  <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch between light and dark">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+      <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/>
+    </svg>
+  </button>
+</header>
+
+<div class="layout">
+  <details class="toc" data-toc open>
+    <summary>On this page</summary>
+    <ol>
+      <li><a href="#form">Contact form</a></li>
+      <li><a href="#covers">What support covers</a></li>
+      <li><a href="#faster">Getting a faster answer</a></li>
+    </ol>
+  </details>
+
+  <main class="content">
+    <p class="eyebrow">Nocturne 1.0</p>
+    <h1>Support</h1>
+    <p class="lede">
+      Found a bug, or stuck on a setting? Send it here. You get an automatic confirmation
+      straight away, and a real answer from a person within two working days.
+    </p>
+
+    <section id="form">
+      <form id="support-form" novalidate>
+        <div class="field">
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required>
+        </div>
+
+        <div class="field">
+          <label for="email">Email address</label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+          <span class="hint">The reply goes here. Check that it is one you read.</span>
+        </div>
+
+        <div class="field">
+          <label for="storeUrl">Store URL</label>
+          <input id="storeUrl" name="storeUrl" type="url" placeholder="https://your-studio.myshopify.com" required>
+          <span class="hint">Your <code>.myshopify.com</code> address, or your own domain.</span>
+        </div>
+
+        <div class="field">
+          <label for="subject">Subject</label>
+          <input id="subject" name="subject" type="text" placeholder="Booking button does nothing on mobile">
+          <span class="hint">Optional. A short line helps us route it faster.</span>
+        </div>
+
+        <div class="field">
+          <label for="message">What is happening?</label>
+          <textarea id="message" name="message" required></textarea>
+          <span class="hint">
+            What you expected, what happened instead, and where — which page, which device. The
+            more precise, the faster this gets fixed.
+          </span>
+        </div>
+
+        <div class="field">
+          <label for="attachment">Screenshot or file</label>
+          <input id="attachment" name="attachment" type="file" accept="image/png,image/jpeg,image/webp,image/gif,application/pdf">
+          <span class="hint">Optional. One image or PDF, up to 10 MB. A screenshot answers most questions on its own.</span>
+        </div>
+
+        <p class="honeypot" aria-hidden="true">
+          <label for="company">Company</label>
+          <input id="company" name="company" type="text" tabindex="-1" autocomplete="off">
+        </p>
+
+        <input type="hidden" name="theme" value="Nocturne 1.0">
+
+        <button class="button" type="submit" data-submit>Send request</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section id="covers">
+      <h2>What support covers</h2>
+      <p>Bugs in the theme, and questions about how to use what it ships with. That includes:</p>
+      <ul>
+        <li>something in the theme not working as documented;</li>
+        <li>help finding or understanding a setting;</li>
+        <li>problems that appear after a theme update.</li>
+      </ul>
+      <p>It does not cover custom code, third-party apps, or design work on your store:</p>
+      <ul>
+        <li>changes the settings cannot make;</li>
+        <li>fixing a theme whose code has been edited;</li>
+        <li>configuring or debugging an app you have installed.</li>
+      </ul>
+      <p>
+        For those, hire a <a href="https://www.shopify.com/partners/directory" rel="nofollow">Shopify Partner</a>.
+      </p>
+      <div class="note note--caution">
+        <p>
+          <strong>Duplicate your theme before editing any code.</strong> Code changes are lost when
+          you install a theme update, and a theme with edited code cannot be supported.
+        </p>
+      </div>
+    </section>
+
+    <section id="faster">
+      <h2>Getting a faster answer</h2>
+      <p>Most of what slows a reply down is missing detail. Before you send:</p>
+      <ul>
+        <li>Add the address of the page where it happens.</li>
+        <li>Say whether it is on a phone, a tablet or a desktop, and in which browser.</li>
+        <li>Attach a screenshot — it usually replaces three messages.</li>
+        <li>Check the <a href="./#faq">FAQ</a>; the two most common questions are answered there.</li>
+      </ul>
+    </section>
+  </main>
+</div>
+
+<footer class="footer">
+  <p>Nocturne 1.0 — a Shopify theme by Atelier Studio. <a href="./">Documentation</a></p>
+</footer>
+
+<script>
+  (function () {
+    var toc = document.querySelector('[data-toc]');
+    if (toc && window.matchMedia('(max-width: 899px)').matches) toc.open = false;
+
+    var root = document.documentElement;
+    document.querySelector('[data-theme-toggle]').addEventListener('click', function () {
+      var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var current = root.getAttribute('data-theme') || (dark ? 'dark' : 'light');
+      var next = current === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('nocturne-docs-theme', next); } catch (e) {}
+    });
+  })();
+
+  // Set both at deploy time — see support-worker/README.md. The endpoint is the
+  // Worker's public URL; the fallback address is only ever shown if the Worker
+  // itself is unreachable, so a merchant is never left with a dead form.
+  var SUPPORT_ENDPOINT = 'https://REPLACE-ME.workers.dev/ticket';
+  var SUPPORT_FALLBACK_EMAIL = '';
+  var MAX_BYTES = 10 * 1024 * 1024;
+
+  (function () {
+    var form = document.getElementById('support-form');
+    var status = document.getElementById('form-status');
+    var button = form.querySelector('[data-submit]');
+
+    function say(state, text) {
+      status.dataset.state = state;
+      status.textContent = text;
+    }
+
+    // Until the Worker is deployed the form has nowhere to post. Say so and
+    // disable it, rather than accepting a message and dropping it — a support
+    // form that silently loses a request is worse than one that admits it is
+    // not open yet.
+    if (SUPPORT_ENDPOINT.indexOf('REPLACE-ME') !== -1) {
+      button.disabled = true;
+      button.textContent = 'Not open yet';
+      say('error', 'This form is being connected and cannot take messages yet. Everything about setting the theme up is in the guide.');
+      return;
+    }
+
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault();
+
+      // Browser validation first, so the messages are the ones the reader's own
+      // browser writes in their own language.
+      if (!form.reportValidity()) return;
+
+      var file = form.attachment.files[0];
+      if (file && file.size > MAX_BYTES) {
+        say('error', 'That file is larger than 10 MB. Send a screenshot, or a link to the file instead.');
+        return;
+      }
+
+      button.disabled = true;
+      say('', 'Sending…');
+
+      try {
+        var response = await fetch(SUPPORT_ENDPOINT, { method: 'POST', body: new FormData(form) });
+        var body = await response.json().catch(function () { return {}; });
+        if (!response.ok) throw new Error(body.error || ('HTTP ' + response.status));
+        form.reset();
+        say('ok', 'Received — reference ' + (body.reference || 'sent') + '. Check your inbox for the confirmation; a person replies within two working days.');
+      } catch (error) {
+        say(
+          'error',
+          'That did not send (' + error.message + '). ' +
+            (SUPPORT_FALLBACK_EMAIL
+              ? 'Email ' + SUPPORT_FALLBACK_EMAIL + ' and we will pick it up there.'
+              : 'Please try again in a minute — nothing was lost.')
+        );
+      } finally {
+        button.disabled = false;
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
