@@ -161,8 +161,8 @@
   // Set both at deploy time — see support-worker/README.md. The endpoint is the
   // Worker's public URL; the fallback address is only ever shown if the Worker
   // itself is unreachable, so a merchant is never left with a dead form.
-  var SUPPORT_ENDPOINT = 'https://REPLACE-ME.workers.dev/ticket';
-  var SUPPORT_FALLBACK_EMAIL = '';
+  var SUPPORT_ENDPOINT = 'https://nocturne-support.floriandelange12.workers.dev/ticket';
+  var SUPPORT_FALLBACK_EMAIL = '';  // set only if the Worker ever needs a bypass
   var MAX_BYTES = 10 * 1024 * 1024;
 
   (function () {
